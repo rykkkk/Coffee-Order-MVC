@@ -1,0 +1,69 @@
+
+h1, h2, h3 {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    color: #400e02;
+}
+header {
+    background-repeat: repeat-x;
+    background-image: url("../images/logo-en.jpg");
+}
+body {
+    background: #ecdecd;
+    font-family: sofia_pro, Helvetica, Arial, sans-serif;
+}
+
+form {
+    width: 300px;
+    margin: auto;
+}
+
+.container {
+     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+
+
+}
+section.coffee {
+      background-color: white;
+  }
+
+table {
+    border: 2px solid #400e02;
+    padding: 20px;
+    margin-bottom: 10px;
+}
+#wrapper {
+    width: 421px;
+    margin: auto;
+}
+
+.btn{
+    background-color: #400e02;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+}
+.inp{
+    padding: 10px 20px;
+    margin: 4px 2px;
+    display: inline-block;
+    font-size: 16px;
+}
+input[type=number]{
+    width: 103px;
+}
+.item {
+    column-count: 2;
+    row-span: 3;
+}
+#orda td {
+    padding-left: 10px;
+    padding-right: 10px;
+    text-align: center;
+}

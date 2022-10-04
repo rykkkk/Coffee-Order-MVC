@@ -1,0 +1,123 @@
+<!-- KRISTA RYK
+    99146369
+    OCTOBER 6 2021 -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns="" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fake Tims</title>
+    <link href="../timhortons.css" rel="stylesheet" type="text/css">
+</head>
+
+<header>
+    <h1><br><br></h1><br><br>
+    <hr>
+</header>
+
+<body>
+
+<h1>Welcome to Tim's!</h1>
+
+<div class="container">
+
+    <section>
+        <table>
+            <form action="#" method="post" th:action="@{/addCup}" th:object="${cup}">
+                <tr>
+                    <th><h2>Your Coffee Order:</h2></th>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Number of Cups:</td>
+                    <td><input autofocus class="inp" min="0" placeholder="0" th:field="*{numCup}" type="number"></td>
+                </tr>
+
+                <tr>
+                    <td><label for="size">Cup Size:</label></td>
+                    <td><select class="inp" id="size" name="size" required th:field="*{size}">
+                        <option class="inp" th:each="s:*{sizes}" th:text="${s}" th:value="${s}"></option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" style="text-align: center"><strong>Quick Drinks</strong><br></td>
+                </tr>
+                <tr>
+                    <td th:colspan="2">
+                        <ol class="item" name="coffeeType" style="list-style: none" th:field="*{coffeeType}">
+                            <li th:each="t:*{types}">
+                                <input name="coffeeType" th:text="${t}" th:value="${t}" type="radio">
+                            </li>
+                        </ol>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <hr>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <button class="btn" type="reset">RESEET</button>
+                    </td>
+                    <td>
+                        <button class="btn" type="submit" value="Add to order">Add to order</button>
+                    </td>
+                    <td>
+                        <a target="_blank" th:href="@{/orderPage}">
+                            <button class="btn" th:action="@{/orderPage}" type="button" value="Checkout">Checkout
+                            </button>
+                        </a>
+                    </td>
+                </tr>
+            </form>
+        </table>
+    </section>
+
+    <section>
+        <table id="orda">
+            <tr>
+                <td><h3>QTY</h3></td>
+                <td><h3>SIZE</h3></td>
+                <td><h3>TYPE</h3></td>
+                <td><h3>SUGAR</h3></td>
+                <td><h3>CREAM</h3></td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <hr>
+                </td>
+            </tr>
+            <tr th:each="c:${coffees}">
+                <td th:text="${c.numCup}"></td>
+                <td th:text="${c.size}"></td>
+                <td th:text="${c.coffeeType}"></td>
+                <td th:text="${c.numSugar}"></td>
+                <td th:text="${c.numCream}"></td>
+                <td><a th:href="@{'/editNumCup/'+${c.id}}">EDIT</a></td>
+                <td><a th:href="@{'/removeCup/'+${c.id}}">REMOVE</a></td>
+            </tr>
+            <tr>
+                <form   type="hidden" action="#" method="post" th:action="@{/updateNumCup}" th:object="${cup}">
+                    <td>Number of Cups:</td>
+                    <td><input class="inp" min="0" th:field="*{numCup}" type="number"></td>
+                    <td><input type="submit" value="Update Number of cups"></td>
+                </form>
+            </tr>
+        </table>
+    </section>
+</div>
+
+
+</body>
+</html>

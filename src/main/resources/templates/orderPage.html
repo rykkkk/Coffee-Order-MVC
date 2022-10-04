@@ -1,0 +1,97 @@
+<!-- KRISTA RYK
+    99146369
+    OCTOBER 6 2021 -->
+
+<!DOCTYPE html>
+<html lang="en" xmlns="" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Your Order at Fake Tim's</title>
+    <link href="../timhortons.css" rel="stylesheet" type="text/css">
+</head>
+
+<header>
+    <h1><br><br></h1><br><br>
+    <hr>
+</header>
+
+<body>
+<h1>Thanks for your order. Here it is:
+MAKE THE CLEAR BUTTON IN THE REPOSIFJT FOLDER AND THEN CEAR.ALL
+</h1>
+
+<nav><button th:href="@{'/index/'}" class="btn" value="Back to order page" type="button">Back to order page</button> </nav>
+
+<div class="container">
+    <section>
+        <table id="orda">
+            <tr>
+                <td><h3>QTY</h3></td>
+                <td><h3>SIZE</h3></td>
+                <td><h3>TYPE</h3></td>
+                <td><h3>SUGAR</h3></td>
+                <td><h3>CREAM</h3></td>
+            </tr>
+            <tr>
+                <td colspan="5">
+                    <hr>
+                </td>
+            </tr>
+           <tr th:object="${coffees}" th:each="c:${coffees}">
+                <td th:text="${c.numCup}"></td>
+                <td th:text="${c.size}"></td>
+                <td th:text="${c.coffeeType}"></td>
+                <td th:text="${c.numSugar}"></td>
+                <td th:text="${c.numCream}"></td>
+            </tr>
+    </table>
+    </section>
+    <!--
+       <section class="coffee">
+           <table>
+               <tr th:each="c:${coffees}">
+                   <td th:each="${c.numCup}">
+                       <img alt="cup size" src="/static/images" th:src="@{../images/cup.jpg}" th:text="${c.size}">
+                   </td>
+                   <td>
+                       <img alt="+" src="/static/images" th:src="@{../images/plus.jpg}">
+                   </td>
+                   <td th:each="${c.numSugar}">
+                       <img alt="sugar" src="/static/images" th:src="@{../images/sugar.jpg}" th:text="${c.numSugar}">
+                   </td>
+                   <td>
+                       <img alt="+" src="/static/images" th:src="@{../images/plus.jpg}">
+                   </td>
+                   <td th:each="${c.numCream}">
+                       <img alt="cream" src="/static/images" th:src="@{../images/cream.jpg}" th:text="${c.numCream}">
+                   </td>
+               </tr>
+
+           </table>
+       </section>
+
+       -->
+
+
+
+
+    <section class="coffee" th:each="c:${coffees}">
+        <table th:if="${coffees != null && coffees != ''}">
+            <tr>
+                <td>
+                    <img alt="cup size" src="/static/images" th:each="${c.numCup}.Integer" th:src="@{../images/cup.jpg}">
+                </td>
+                <td><img src="/static/images" th:text="${c.size}" th:src="@{../images/cup.jpg}" alt="cup size"></td>
+                <td><img src="/static/images" th:src="@{../images/plus.jpg}" alt="+"></td>
+                <td><img src="/static/images" th:text="${c.numSugar}" th:src="@{../images/sugar.jpg}" alt="sugar"></td>
+                <td><img src="/static/images" th:src="@{../images/plus.jpg}" alt="+"></td>
+                <td><img src="/static/images" th:text="${c.numCream}" th:src="@{../images/cream.jpg}" alt="cream"></td>
+            </tr>
+        </table>
+    </section>
+
+
+</div>
+</body>
+</html>
